@@ -1,0 +1,40 @@
+UserName: {{emp}}
+<br>
+search: <input type="text" [(ngModel)]="query">
+<div *ngIf="isUpdate">
+    ADD Products:
+    productName:<input type="text" [(ngModel)]="product.name">
+    Description:<input type="text" [(ngModel)]="product.description">
+    Price:<input type="text" [(ngModel)]="product.price">
+    Discount:<input type="text" [(ngModel)]="product.discount">
+    <input type="button" (click)="save()" value="Save">    
+</div>
+
+
+    <table class="table table-striped">
+        <tr>
+            <th>product</th>
+            <th>description</th>
+            <th>price</th>
+            <th>Discount Price</th>
+        </tr>
+        <tr *ngFor="let x of products | search : query">
+            <td>{{x.name}}</td>
+            <td>{{x.description}}</td>
+            <td>{{x.price}}</td>
+            <td>{{x.discount}}</td>
+            <td><button class="btn btn-primary" (click)="update(x)" >Update</button></td>
+            <td><button class="btn btn-primary" (click)="delete(x)">Delete</button></td>
+            
+        </tr>
+
+    </table>
+
+ADD Products:
+    productName:<input type="text" [(ngModel)]="product.name">
+    Description:<input type="text" [(ngModel)]="product.description">
+    Price:<input type="text" [(ngModel)]="product.price">
+    Id:<input type="text" [(ngModel)]="product.id">
+    Discount:<input type="text" [(ngModel)]="product.discount">
+    Quantity:<input type="text" [(ngModel)]="product.quantity">
+    <input type="button" (click)="save()" value="Save">

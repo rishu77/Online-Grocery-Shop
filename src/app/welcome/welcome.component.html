@@ -1,0 +1,91 @@
+<h1 text-align=center>welcome To Grocery!</h1>
+UserName: {{emp}}
+<p align="right">
+    <button class="btn btn-success" (click)="openOrder()">My Order</button>
+</p>
+
+search: <input type="text" [(ngModel)]="query">
+
+
+<br>
+
+
+<div *ngIf="isProductOpen">
+
+    <table class="table table-striped">
+        <tr>
+            <th>product</th>
+            <th>description</th>
+            <th>price</th>
+            <th>Discount Price</th>
+        </tr>
+        <tr *ngFor="let x of items | search : query">
+            <td>{{x.name}}</td>
+            <td>{{x.description}}</td>
+            <td>{{x.price}}</td>
+            <td>{{x.discount}}</td>
+            <td><button class="btn btn-primary" (click)="addToCart(x)">Add to Cart</button></td>
+        </tr>
+
+    </table>
+    <button class="btn btn-success" (click)="openCart()">My Cart</button>
+</div>
+
+
+
+
+
+<div *ngIf="isCartOpen" class="cart products">
+    <table class="table table-striped">
+        <tr>
+            <th>name</th>
+            <th>price</th>
+            <th>increase</th>
+            <th>quantity</th>
+            <th>decrease</th>
+        </tr>
+        <tr *ngFor="let x of cart">
+            <td>{{x.name}}</td>
+            <td>{{x.price}}</td>
+
+            <td><button class="btn btn-secondary" (click)="addMore(x)">+</button> </td>
+            <td>{{x.quantity}}</td>
+            <td><button class="btn btn-secondary" (click)="decrease(x)">-</button></td>
+        </tr>
+        <tr>Total Amount : {{fullAmount}}</tr>
+        <tr>Discount Amount : {{discountAmount}}</tr>
+        <tr>______________________</tr>
+        <tr>Paying Amount : {{totalAmount}}</tr>
+
+    </table>
+    <button class="btn btn-success" (click)="openProduct()">Home</button>
+
+</div>
+
+
+
+
+<div *ngIf="isOrderOpen" class="cart products">
+    <table class="table table-striped">
+        <tr>
+            <th>name</th>
+            <th>price</th>
+
+            <th>quantity</th>
+
+        </tr>
+        <tr *ngFor="let x of cart">
+            <td>{{x.name}}</td>
+            <td>{{x.price}}</td>
+            <td>{{x.quantity}}</td>
+        </tr>
+        <tr>Total Amount : {{fullAmount}}</tr>
+        <tr>Discount Amount : {{discountAmount}}</tr>
+        <tr>______________________</tr>
+        <tr>Paying Amount : {{totalAmount}}</tr>
+
+    </table>
+    <button class="btn btn-success" (click)="openProduct()">Home</button>
+</div>
+
+
