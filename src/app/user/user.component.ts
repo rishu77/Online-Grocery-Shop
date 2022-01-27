@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from '../model/product';
 import { DataService } from '../Service/data.service';
 import { ProductservicesService } from '../Service/productservices.service';
@@ -14,7 +15,7 @@ export class UserComponent implements OnInit {
   query: String = ""
   emp: string = ""
   products: Product[] = []
-  constructor(private productService: ProductservicesService, private dataService: DataService) {
+  constructor(private productService: ProductservicesService, private dataService: DataService,private router :Router) {
     this.products = this.productService.items;
     this.emp = JSON.stringify(this.dataService.currentUser?.email)
   }
@@ -47,5 +48,11 @@ export class UserComponent implements OnInit {
    this.product=editProduct
    
   }
+    
+  logout(){
+    this.dataService.logout();
+    this.router.navigateByUrl("/login");
+  }
+
 }
 

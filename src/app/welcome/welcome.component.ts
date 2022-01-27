@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from '../model/product';
 import { DataService } from '../Service/data.service';
 import { ProductservicesService } from '../Service/productservices.service';
@@ -29,7 +30,7 @@ export class WelcomeComponent implements OnInit {
 
  items:Product[]=[];
 
-  constructor(private dataService: DataService,private productService:ProductservicesService) {
+  constructor(private dataService: DataService,private productService:ProductservicesService,private router:Router) {
 
   this.items=this.productService.items;
   
@@ -122,6 +123,9 @@ export class WelcomeComponent implements OnInit {
 
   
   
-
+  logout(){
+    this.dataService.logout();
+    this.router.navigateByUrl("/login");
+  }
 
 }
