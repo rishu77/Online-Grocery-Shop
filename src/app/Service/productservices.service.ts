@@ -12,6 +12,7 @@ setdata(productDetail:Product){
 
   this.arr=productDetail;
   this.item.push(productDetail)
+  this.items=this.products.concat(this.item)
 }
 
 

@@ -32,6 +32,13 @@ export class UserComponent implements OnInit {
 
 
   }
+  save1(){
+    this.productService.update(this.product)
+   
+    this.product = new Product();
+
+
+  }
   delete( item:Product) {
     let index = this.products.indexOf(item)
       if (index != -1) {

@@ -1,9 +1,9 @@
 <p align="right">
     <button class="btn btn-danger" (click)="logout()">Log Out</button>
 </p>
-
-<h1 text-align="center">welcome To Grocery!</h1>
-
+<div *ngIf="isProductOpen">
+<h1 text-align="center">Add Your Favourite products!</h1>
+</div>
 UserName: {{emp}}
 <p align="right">
     <button class="btn btn-success" (click)="openOrder()">My Order</button>
@@ -41,6 +41,7 @@ search: <input type="text" [(ngModel)]="query">
 
 
 <div *ngIf="isCartOpen" class="cart products">
+    <h1 text-align="center">welcome To Cart!</h1>
     <table class="table table-striped">
         <tr>
             <th>name</th>
@@ -60,7 +61,7 @@ search: <input type="text" [(ngModel)]="query">
         <tr>Total Amount : {{fullAmount}}</tr>
         <tr>Discount Amount : {{discountAmount}}</tr>
         <tr>______________________</tr>
-        <tr>Paying Amount : {{totalAmount}}</tr>
+        <tr> Amount to be Paid : {{totalAmount}}</tr>
 
     </table>
     <button class="btn btn-success" (click)="openProduct()">Home</button>
@@ -71,6 +72,7 @@ search: <input type="text" [(ngModel)]="query">
 
 
 <div *ngIf="isOrderOpen" class="cart products">
+    <h1 text-align="center">Your Order Details!</h1>
     <table class="table table-striped">
         <tr>
             <th>name</th>
@@ -87,7 +89,7 @@ search: <input type="text" [(ngModel)]="query">
         <tr>Total Amount : {{fullAmount}}</tr>
         <tr>Discount Amount : {{discountAmount}}</tr>
         <tr>______________________</tr>
-        <tr>Paying Amount : {{totalAmount}}</tr>
+        <tr> Amount to be Paid : {{totalAmount}}</tr>
 
     </table>
     <button class="btn btn-success" (click)="openProduct()">Home</button>
