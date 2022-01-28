@@ -53,7 +53,7 @@ export class UserComponent implements OnInit {
     this.isUpdate=true;
     
    this.product=editProduct
-   
+  
   }
     
   logout(){

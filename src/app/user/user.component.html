@@ -26,13 +26,13 @@ search: <input type="text" [(ngModel)]="query">
     </table>
 
 ADD Products:
-    productName:<input type="text" [(ngModel)]="product.name">
+    productName:<input type="text"  [(ngModel)]="product.name">
     Description:<input type="text" [(ngModel)]="product.description">
     Price:<input type="text" [(ngModel)]="product.price">
     Id:<input type="text" [(ngModel)]="product.id">
     Discount:<input type="text" [(ngModel)]="product.discount">
     Quantity:<input type="text" [(ngModel)]="product.quantity">
-    <input type="button" (click)="save()" value="Save">
+    <input type="button" class="btn btn-primary"(click)="save()" value="Save">
 <br>
 <br>
 <div *ngIf="isUpdate">
@@ -41,5 +41,5 @@ ADD Products:
     Description:<input type="text" [(ngModel)]="product.description">
     Price:<input type="text" [(ngModel)]="product.price">
     Discount:<input type="text" [(ngModel)]="product.discount">
-    <input type="button" (click)="save1()" value="Save">    
+    <input type="button" class="btn btn-primary" (click)="save1()" value="Save">    
 </div>
