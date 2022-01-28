@@ -18,8 +18,8 @@ search: <input type="text" [(ngModel)]="query">
             <td>{{x.description}}</td>
             <td>{{x.price}}</td>
             <td>{{x.discount}}</td>
-            <td><button class="btn btn-primary" (click)="update(x)" >Update</button></td>
-            <td><button class="btn btn-primary" (click)="delete(x)">Delete</button></td>
+            <td><button class="btn btn-warning" (click)="update(x)" >Update</button></td>
+            <td><button class="btn btn-danger" (click)="delete(x)">Delete</button></td>
             
         </tr>
 
