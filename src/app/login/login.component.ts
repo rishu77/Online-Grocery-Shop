@@ -11,49 +11,47 @@ import { DataService } from '../Service/data.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
- 
-  
-user:Detail=new Detail();
 
-
-
+  user: Detail = new Detail();
 
   constructor(private dataService: DataService, private router: Router) {
-   
-   }
 
-
+  }
 
   ngOnInit(): void {
-  
+
   }
-a:Detail[]=[]
+  iscorrect: boolean = false;
 
-  save() {
-    if(this.dataService.checking(this.user.email,this.user.password)=="true")
-    { if((this.user.email=="admin@gmail.com")&&
-     (JSON.stringify(this.user.password=="admin")))
-    {
-      this.router.navigateByUrl("/user")
-          }
-          else
-          {
-            this.welcome()
+  save1() {
+    this.dataService.getLoginAccess(this.user).subscribe(
+      (data) => {
 
-            
-          }
-    }else
-    alert("wrong credentail")
-   
+
+        console.log(JSON.stringify(data));
+
+        if ((this.user.EMAIL == "admin@gmail.com") &&
+          (JSON.stringify(this.user.PASSWORD == "admin"))) {
+          this.router.navigateByUrl("/user")
+        }
+
+        else {
+          console.log(this.iscorrect = true)
+          this.welcome();
+        }
+
+      },
+      (error) => {
+        console.log("Some thing went wrong")
+        console.log(error.error);
+        alert("wrong credentail")
+      });
   }
-  
-
-
   welcome() {
     this.router.navigateByUrl("/welcome");
   }
-}
 
+}
 
 
 

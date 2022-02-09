@@ -6,7 +6,7 @@
 <form class="" #frm='ngForm'>
     <div class="">
         <label for="email"><b>Email</b></label>
-        <input type="email" [(ngModel)]="emp.email" name="email" required #email='ngModel' email>
+        <input type="email" [(ngModel)]="emp.EMAIL" name="email" required #email='ngModel' email>
     </div>
     <div *ngIf="email.invalid && (email.dirty || email.touched)">
 
@@ -20,21 +20,21 @@
 
     <div class="">
         <label for="name"><b>Name</b></label>
-        <input type="text" [(ngModel)]="emp.name" name="name" required>
+        <input type="text" [(ngModel)]="emp.NAME" name="name" required>
     </div>
 
     <div class="">
         <label for="FirstName"><b>FirstName</b></label>
-        <input type="text" [(ngModel)]="emp.firstName" name="FirstName" required="">
+        <input type="text" [(ngModel)]="emp.FIRSTNAME" name="FirstName" required="">
     </div>
 
     <div>
         <label for="LastName"><b>LastName</b></label>
-        <input type="text" [(ngModel)]="emp.lastName" name="LastName" required="">
+        <input type="text" [(ngModel)]="emp.LASTNAME" name="LastName" required="">
     </div>
     <div>
         <label for="Password"><b>Password</b></label>
-        <input type="password" [(ngModel)]="emp.password" name="Password" required #password='ngModel' minlength="5">
+        <input type="password" [(ngModel)]="emp.PASSWORD" name="Password" required #password='ngModel' minlength="5">
     </div>
     <div *ngIf="password.invalid && (password.dirty || password.touched)">
 
@@ -46,6 +46,6 @@
         </div>
     </div>
 
-    <input type="button" (click)="save()" value="Save" class="btn btn-primary">
+    <input type="button" (click)="addEmployee()" value="Save" class="btn btn-primary">
 
 </form>

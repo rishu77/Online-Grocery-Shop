@@ -8,28 +8,34 @@ import { DataService } from '../Service/data.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  emp:Detail=new Detail;
+  
   isFilled:boolean=false;
   constructor(private dataService:DataService ) {}
-str:Detail[]=[]
+
   ngOnInit(): void {
   }
   
   
-  save(){
   
-     
-     this.str.unshift(this.emp)
- 
+  msg:any=undefined;
+  errMsg:any=undefined;
+  emp:Detail=new Detail;
+  
+  addEmployee(){
 
-   this.dataService.setdata(this.emp)
-   if(this.emp.email==""||this.emp.name==""||this.emp.firstName==""||this.emp.lastName==""
-   ||this.emp.password==""){
-   alert("Please Fill All The Details")
-   }else{
-   this.isFilled=true;
-   console.log(this.str)
-   this.emp=new Detail(); }
-  
+    console.log("Add emp called")
+    console.log(JSON.stringify(this.emp))
+    this.dataService.addEmployee(this.emp).subscribe(
+      (data)=>{
+        this.msg="Added";
+        this.errMsg=undefined;
+        this.isFilled=true
+      },
+      (error)=>{
+        this.msg=undefined;
+        this.errMsg="Not added"//JSON.stringify(error.error);
+        
+      }
+    )
   }
 }

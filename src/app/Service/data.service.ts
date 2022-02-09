@@ -2,70 +2,51 @@ import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Detail } from '../C/detail';
 
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
+  constructor(private http: HttpClient) { }
+
   emp: Detail = new Detail();
-  admin: Detail = { name: "Admin", email: "admin@gmail.com", firstName: "admin", lastName: "admin", password: "admin" };
-  user:Detail={name: "User", email: "user@gmail.com", firstName: "user", lastName: "user", password: "12345"}
-  flag: string = "";
-  arr: Detail[] = []
- constructor() { }
   currentUser: Detail | null = null;
 
 
-  checking(email: string, password: string){
-  if( ((this.user.email==email)&&(this.user.password==password))){
-    this.flag = "true"
-    this.currentUser = this.user;
+  addEmployee(employee: Detail): Observable<any> {
+    console.log("Add emp service:" + JSON.stringify(employee))
+    return this.http.post("http://localhost:3000/register/", employee, { responseType: 'text' });
   }
-  else if ((this.admin.email==email) &&(this.admin.password==password)) {
-    this.flag = "true"
-    this.currentUser = this.admin;
-    
-  } else if (this.check(email,password)) {
-    this.flag="true"
-    } 
-    return this.flag;
- 
 
-}
-  check(email: string, password: string) {
 
-    
-    for (let i = 0; i < this.arr.length; i++) {
-      if (((this.arr[i].email == email) && (this.arr[i].password == password))) 
-      {
-        this.flag = "true"
-        this.currentUser = this.arr[i];
-      }
-      
+  deleteEmployeeById(eId: number): Observable<any> {
 
-     
-    }
+    return this.http.delete("http://localhost:3000/register/" + eId, { responseType: 'text' });
+  }
 
-    return this.flag
+  getAllEmployees(): Observable<any> {
+
+    return this.http.get("http://localhost:3000/register");
+  }
+
+  getLoginAccess(employee: Detail): Observable<any> {
+    this.currentUser = employee;
+    return this.http.post("http://localhost:3000/login/", employee, { responseType: 'text' });
+
+  }
+
+
+  getLoginUser(): Detail | null {
+    return this.currentUser;
   }
 
 
   logout() {
     this.currentUser = null;
   }
-  getLoginUser(): Detail | null {
-    return this.currentUser;
-  }
-
-
-  setdata(empData: Detail) {
-
-    this.emp = empData
-    this.arr.push(this.emp)
-  }
-
-  getdata() {
-
-    return this.emp
-  }
 }
+
+
+

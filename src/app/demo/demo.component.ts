@@ -29,7 +29,7 @@ count:number=0
 {
   
 
-  this.cart.push(x)
+ // this.cart.push(x)
 
  }
 

@@ -25,22 +25,15 @@ export class WelcomeComponent implements OnInit {
 
   totalAmount = 0;
   fullAmount = 0;
-  discountAmount = 0;
+  DISCOUNTAmount = 0;
 
 
  items:Product[]=[];
 
   constructor(private dataService: DataService,private productService:ProductservicesService,private router:Router) {
 
-  this.items=this.productService.items;
-  
-    
-    this.emp = JSON.stringify(this.dataService.currentUser?.email);
-    if(this.dataService.currentUser?.email=="admin@gmail.com"){
-      this.isAdmin=true
-    }
-    else
-    this.isAdmin=false
+  this.loadAllProducts();
+
   }
 
   ngOnInit(): void {
@@ -68,20 +61,20 @@ export class WelcomeComponent implements OnInit {
 
 
   addMore(item: Product) {
-    item.quantity++
- this.totalAmount =Number(this.totalAmount) +Number( item.discount)
-   this.fullAmount = Number(this.fullAmount) +Number(item.price)
-    this.discountAmount = Number(this.discountAmount) + Number(item.price - item.discount)
+    item.QUANTITY++
+ this.DISCOUNTAmount = Number(this.DISCOUNTAmount) +Number( item.DISCOUNT)//discount
+   this.fullAmount = Number(this.fullAmount) +Number(item.PRICE)//total amount
+    this.totalAmount = Number(this.totalAmount)+ Number(Number(item.PRICE) - item.DISCOUNT)//amount after discount
 
   }
 
 
   decrease(item: Product) {
-    item.quantity--;
-    this.totalAmount = Number(this.totalAmount) -Number(item.discount);
-    this.fullAmount = Number(this.fullAmount) -Number( item.price);
-    this.discountAmount =Number(this.discountAmount) -Number( (item.price - item.discount));
-    if (item.quantity == 0) {
+    item.QUANTITY--;
+    this.DISCOUNTAmount = Number(this.DISCOUNTAmount) -Number( item.DISCOUNT)//discount
+   this.fullAmount = Number(this.fullAmount) -Number(item.PRICE)//total amount
+    this.totalAmount = Number(this.totalAmount)- Number(item.PRICE - item.DISCOUNT)//amount after discount
+    if (item.QUANTITY == 0) {
       let index = this.cart.indexOf(item)
       if (index != -1) {
         this.cart.splice(index, 1)
@@ -91,29 +84,33 @@ export class WelcomeComponent implements OnInit {
 
 
   addToCart(item: Product) {
-    // console.log(item);
+     //console.log(item.PRICE);
     let check: boolean = true;
     for (let i = 0; i < this.cart.length; i++) {
-      if (this.cart[i].id === item.id && this.cart[i].name === item.name) {
-        this.cart[i].quantity++
-        this.totalAmount =Number( this.totalAmount )+ Number(item.discount);
-        this.fullAmount =Number(this.fullAmount) +Number(item.price);
-        this.discountAmount =Number(this.discountAmount )+ Number(item.price - item.discount);
+      if (this.cart[i].ID === item.ID && this.cart[i].NAME === item.NAME) {
+        this.cart[i].QUANTITY++
+        this.DISCOUNTAmount = Number(this.DISCOUNTAmount) +Number( item.DISCOUNT)//discount
+        this.fullAmount = Number(this.fullAmount) +Number(item.PRICE)//total amount
+         this.totalAmount = Number(this.totalAmount)+ Number(Number(item.PRICE) - item.DISCOUNT)//amount after discount
+     
+        
         check = false;
         break;
       }
     }
     if (check == true) {
       {
-        if (item.quantity == 0)
-          item.quantity = 1;
+        if (item.QUANTITY == 0)
+          item.QUANTITY = 1;
       }
-      this.totalAmount =Number(this.totalAmount)+ Number(item.discount);
-      this.fullAmount =Number(this.fullAmount)+Number( item.price);
-      this.discountAmount += Number(this.discountAmount)+Number(item.price - item.discount);
+      this.DISCOUNTAmount = Number(this.DISCOUNTAmount) +Number( item.DISCOUNT)//discount
+   this.fullAmount = Number(this.fullAmount) +Number(item.PRICE)//total amount
+    this.totalAmount = Number(this.totalAmount)+ Number(Number(item.PRICE) - item.DISCOUNT)//amount after discount
+
+      
       this.cart.push(item);
 
-      console.log(this.cart)
+      console.log(this.cart);
     }
     console.log(this.totalAmount);
   }
@@ -127,5 +124,29 @@ export class WelcomeComponent implements OnInit {
     this.dataService.logout();
     this.router.navigateByUrl("/login");
   }
+
+
+
+
+
+products: Product[]=[];
+
+loadAllProducts() {
+  this.productService.getAllProducts().subscribe(
+    (data) => {
+      console.log(JSON.stringify(data));
+      this.products = data;
+
+    },
+    (error) => {
+      console.log("Some thing went wrong")
+      console.log(error.error);
+
+    });
+}
+
+
+  
+
 
 }

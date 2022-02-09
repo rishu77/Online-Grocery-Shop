@@ -1,35 +1,35 @@
-<h1 text-align="center">welcome To Grocery!</h1>
+<h1 text-align="center">Welcome To Grocery!</h1>
 <div class="container">
-<form #frm = 'ngForm'>
-    <p style="text-align: center">login works!</p>
+  <form #frm='ngForm'>
+    <p style="text-align: center"></p>
 
     <div>
-        <label for="email"><b>Email</b></label>
-        <input type="email" [(ngModel)]="user.email" name="email" #email='ngModel'   required  >
+      <label for="email"><b>Email</b></label>
+      <input type="email" [(ngModel)]="user.EMAIL" name="email" #email='ngModel' required>
     </div>
-    <div *ngIf = "email.invalid && (email.dirty || email.touched)">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)">
 
-        <div class="alert alert-danger" *ngIf = "email.errors?.['required'] ">
-          Email id is Required.
-        </div>
-        <div class="alert alert-danger" *ngIf = "email.errors?.['email'] ">
-          Email id is Invalid.
-        </div>
-</div>
+      <div class="alert alert-danger" *ngIf="email.errors?.['required'] ">
+        Email id is Required.
+      </div>
+      <div class="alert alert-danger" *ngIf="email.errors?.['email'] ">
+        Email id is Invalid.
+      </div>
+    </div>
 
     <div>
-        <label for="Password"><b>Password</b></label>
-        <input type="password" [(ngModel)]="user.password" name="password" required #password='ngModel' minlength="5">
+      <label for="Password"><b>Password</b></label>
+      <input type="password" [(ngModel)]="user.PASSWORD" name="password" required #password='ngModel' minlength="5">
     </div>
-    <div *ngIf = "password.invalid && (password.dirty || password.touched)">
+    <div *ngIf="password.invalid && (password.dirty || password.touched)">
 
-    <div class="alert alert-danger" *ngIf = "password.errors?.['required'] ">
+      <div class="alert alert-danger" *ngIf="password.errors?.['required'] ">
         Password is Required.
       </div>
-      <div class="alert alert-danger" *ngIf = "password.errors?.['minlength'] ">
+      <div class="alert alert-danger" *ngIf="password.errors?.['minlength'] ">
         Password needs to have 5 chars.
       </div>
     </div>
-    <input type="button" (click)="save()" value="save">
-</form>
+    <input type="button" (click)="save1()" value="save">
+  </form>
 </div>

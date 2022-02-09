@@ -1,17 +1,17 @@
 export class Detail {
 
-name:string;
-email:string;
-firstName:string;
-lastName:string;
-password:string;
+NAME:string;
+EMAIL:string;
+FIRSTNAME:string;
+LASTNAME:string;
+PASSWORD:string;
 constructor(){
     
-    this.name=""
-    this.email=""
-    this.firstName=""
-    this.lastName=""
-    this.password=""
+    this.NAME=""
+    this.EMAIL=""
+    this.FIRSTNAME=""
+    this.LASTNAME=""
+    this.PASSWORD=""
 }
 }
 

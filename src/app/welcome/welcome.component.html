@@ -24,11 +24,11 @@ search: <input type="text" [(ngModel)]="query">
             <th>price</th>
             <th>Discount Price</th>
         </tr>
-        <tr *ngFor="let x of items | search : query">
-            <td>{{x.name}}</td>
-            <td>{{x.description}}</td>
-            <td>{{x.price}}</td>
-            <td>{{x.discount}}</td>
+        <tr *ngFor="let x of products | search : query">
+            <td>{{x.NAME}}</td>
+            <td>{{x.DESCRIPTION}}</td>
+            <td>{{x.PRICE | currency : "INR"}}</td>
+            <td>{{x.DISCOUNT | currency : "INR"}}</td>
             <td><button class="btn btn-primary" (click)="addToCart(x)">Add to Cart</button></td>
         </tr>
 
@@ -41,7 +41,7 @@ search: <input type="text" [(ngModel)]="query">
 
 
 <div *ngIf="isCartOpen" class="cart products">
-    <h1 text-align="center">welcome To Cart!</h1>
+    <h1 text-align="center">Welcome To Cart!</h1>
     <table class="table table-striped">
         <tr>
             <th>name</th>
@@ -51,15 +51,15 @@ search: <input type="text" [(ngModel)]="query">
             <th>decrease</th>
         </tr>
         <tr *ngFor="let x of cart">
-            <td>{{x.name}}</td>
-            <td>{{x.price}}</td>
+            <td>{{x.NAME}}</td>
+            <td>{{x.PRICE}}</td>
 
             <td><button class="btn btn-secondary" (click)="addMore(x)">+</button> </td>
-            <td>{{x.quantity}}</td>
+            <td>{{x.QUANTITY}}</td>
             <td><button class="btn btn-secondary" (click)="decrease(x)">-</button></td>
         </tr>
         <tr>Total Amount : {{fullAmount}}</tr>
-        <tr>Discount Amount : {{discountAmount}}</tr>
+       <tr> Discount: {{DISCOUNTAmount}}</tr>
         <tr>______________________</tr>
         <tr> Amount to be Paid : {{totalAmount}}</tr>
 
@@ -82,12 +82,12 @@ search: <input type="text" [(ngModel)]="query">
 
         </tr>
         <tr *ngFor="let x of cart">
-            <td>{{x.name}}</td>
-            <td>{{x.price}}</td>
-            <td>{{x.quantity}}</td>
+            <td>{{x.NAME}}</td>
+            <td>{{x.PRICE}}</td>
+            <td>{{x.QUANTITY}}</td>
         </tr>
         <tr>Total Amount : {{fullAmount}}</tr>
-        <tr>Discount Amount : {{discountAmount}}</tr>
+        
         <tr>______________________</tr>
         <tr> Amount to be Paid : {{totalAmount}}</tr>
 

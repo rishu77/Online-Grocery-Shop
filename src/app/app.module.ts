@@ -14,7 +14,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SearchPipe } from './pipe/search.pipe';
 import { UserComponent } from './user/user.component';
 
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { UserComponent } from './user/user.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
-
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Detail } from '../C/detail';
 import { DataService } from './data.service';
 
 @Injectable({
@@ -11,7 +12,9 @@ export class AuthserviceService implements CanActivate {
   constructor(private dataService:DataService) { }
   canActivate(): boolean {
 if(this.dataService.getLoginUser()!=null) return true;
-else 
+else
 return false;
   }
+
+  
 }

@@ -8,38 +8,39 @@ search: <input type="text" [(ngModel)]="query">
 
     <table class="table table-striped">
         <tr>
+            
             <th>product</th>
             <th>description</th>
             <th>price</th>
             <th>Discount Price</th>
         </tr>
         <tr *ngFor="let x of products | search : query">
-            <td>{{x.name}}</td>
-            <td>{{x.description}}</td>
-            <td>{{x.price}}</td>
-            <td>{{x.discount}}</td>
+
+            <td>{{x.NAME}}</td>
+            <td>{{x.DESCRIPTION}}</td>
+            <td>{{x.PRICE}}</td>
+            <td>{{x.DISCOUNT}}</td>
             <td><button class="btn btn-warning" (click)="update(x)" >Update</button></td>
-            <td><button class="btn btn-danger" (click)="delete(x)">Delete</button></td>
+            <td><button class="btn btn-danger" (click)="deleteProduct(x.id)">Delete</button></td>
             
         </tr>
 
     </table>
 
 ADD Products:
-    productName:<input type="text"  [(ngModel)]="product.name">
-    Description:<input type="text" [(ngModel)]="product.description">
-    Price:<input type="text" [(ngModel)]="product.price">
-    Id:<input type="text" [(ngModel)]="product.id">
-    Discount:<input type="text" [(ngModel)]="product.discount">
-    Quantity:<input type="text" [(ngModel)]="product.quantity">
-    <input type="button" class="btn btn-primary"(click)="save()" value="Save">
+    productName:<input type="text"  [(ngModel)]="product.NAME">
+    Description:<input type="text" [(ngModel)]="product.DESCRIPTION">
+    Price:<input type="text" [(ngModel)]="product.PRICE"> 
+    Discount:<input type="text" [(ngModel)]="product.DISCOUNT">
+    Quantity:<input type="text" [(ngModel)]="product.QUANTITY">
+    <input type="button" class="btn btn-primary"(click)="addProduct()" value="Save">
 <br>
 <br>
 <div *ngIf="isUpdate">
     Update Products:
-    productName:<input type="text" [(ngModel)]="product.name">
-    Description:<input type="text" [(ngModel)]="product.description">
-    Price:<input type="text" [(ngModel)]="product.price">
-    Discount:<input type="text" [(ngModel)]="product.discount">
-    <input type="button" class="btn btn-primary" (click)="save1()" value="Save">    
+    productName:<input type="text" [(ngModel)]="product.NAME">
+    Description:<input type="text" [(ngModel)]="product.DESCRIPTION">
+    Price:<input type="text" [(ngModel)]="product.PRICE">
+    Discount:<input type="text" [(ngModel)]="product.DISCOUNT">
+    <input type="button" class="btn btn-primary" (click)="updateProduct()" value="Save">    
 </div>

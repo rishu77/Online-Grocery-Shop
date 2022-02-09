@@ -1,0 +1,27 @@
+<p>employee works!</p>
+
+search: <input type="text" [(ngModel)]="query">
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>update</th>
+    </tr>
+    <tr *ngFor="let emp of employees  | search : query">
+        <td>{{emp.empid}}</td>
+        <td>{{emp.empname}}</td>
+        <td>{{emp.salary}}</td>
+      
+    </tr>
+</table>
+
+
+ADD Employee:
+
+    empName:<input type="text"  [(ngModel)]="employee.empname">
+    Department:<input type="text" [(ngModel)]="employee.deptid">
+    Salary:<input type="text"  [(ngModel)]="employee.salary">
+    projectid:<input type="text" [(ngModel)]="employee.projectid">
+    Address:<input type="text"  [(ngModel)]="employee.addressid">
+    <input type="button" class="btn btn-primary"(click)="addEmployee()" value="Save">

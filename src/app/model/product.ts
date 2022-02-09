@@ -1,16 +1,16 @@
 export class Product {
-    name;
-    description;
-    price:number;
-    id:number;
-    quantity:number;
-    discount:number;
+    NAME;
+    DESCRIPTION;
+    PRICE:number;
+    ID:number;
+    QUANTITY:number;
+    DISCOUNT:number;
     constructor() {
-        this.name ="" ;
-        this.description ="";
-        this.price = 0;
-    this.id=0
-    this.discount=0
-    this.quantity=0
+        this.NAME ="" ;
+        this.DESCRIPTION ="";
+        this.PRICE = 0;
+    this.ID=0
+    this.DISCOUNT=0
+    this.QUANTITY=0
     }
 }
